@@ -52,6 +52,10 @@ var llantasBochito = {
     material: "Caucho"
 }
 
+if (llantasBochito.material == "Caucho") {
+  console.log("Imprimir algo")
+}
+
 var llantasMichelin = {
     id: "ajsdkajsdkasjdkasjdkas",
     modelo: "Michelin",
