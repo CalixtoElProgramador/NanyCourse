@@ -14,20 +14,11 @@ console.log("|                                          |")
 console.log("============================================")
 
 rl.question(`¿Cuál es tu edad? `, (edad) => {
-  if (edad >= 18) {
+  if (esMayorDeEdad(edad)) {
     rl.question('¿Ya hiciste tu servicio militar? (s/n) ', (anwser) => {
-      if (anwser == "s" || anwser == "S") {
+      if (esAfirmativo(anwser)) {
         rl.question('¿Cuál es tu nombre? ', (nombre) => {
-          if (personasConServicioMilitar.includes(nombre)) {
-            console.log(`Efectivamente ${nombre}, estás dentro del servicio.`)
-            rl.close(); //Acaba el programa
-          } else {
-            console.log("Nos acabas de engañar mentiroso. Vamos a por ti.")
-            rl.question('¿Dónde vives, mentiroso? ', (lugar) => {
-              console.log(`Ok ${nombre} con ${edad} años, vamos a ${lugar} para llevarte a la carcel.`)
-              rl.close(); // Acaba el programa
-            })
-          }
+          questionWhatItYourNameFlow(nombre, edad)
         })
       } else if (anwser == 'n' || anwser == 'N') {
         console.log('Tienes que hacerlo')
@@ -47,7 +38,7 @@ rl.question(`¿Cuál es tu edad? `, (edad) => {
   } else {
     console.log("Eres menor de edad.")
     rl.question("¿Te gustaría alistarte al ejercicio, hijo? (s/n)", (respuesta) => {
-      if (respuesta == "s" || respuesta == "S") {
+      if (esAfirmativo(respuesta)) {
         rl.question('¿Cuál es tu nombre? ', (primerNombre) => {
           rl.question('¿Cuál es tu apellido paterno? ', (apellidoPaterno) => {
             rl.question('¿Cual es tu apellido materno?', (apellidoMaterno) => {
@@ -76,3 +67,32 @@ rl.question(`¿Cuál es tu edad? `, (edad) => {
     })
   }
 });
+
+function esMayorDeEdad(edad) {
+  return edad >= 18 // booleano
+}
+
+function esAfirmativo(anwser) {
+  return anwser == "S" || anwser == "s"
+}
+
+function isNameIncludesOnTheDatabase(name, database) {
+  return database.includes(name)
+}
+
+function felicitarPorSuServicio(nombre) {
+  console.log(`Efectivamente ${nombre}, estás dentro del servicio.`)
+}
+
+function questionWhatItYourNameFlow(nombre, edad) {
+  if (isNameIncludesOnTheDatabase(nombre, personasConServicioMilitar)) {
+    felicitarPorSuServicio(nombre)
+    rl.close(); //Acaba el programa
+  } else {
+    console.log("Nos acabas de engañar mentiroso. Vamos a por ti.")
+    rl.question('¿Dónde vives, mentiroso? ', (lugar) => {
+      console.log(`Ok ${nombre} con ${edad} años, vamos a ${lugar} para llevarte a la carcel.`)
+      rl.close(); // Acaba el programa
+    })
+  }
+}
