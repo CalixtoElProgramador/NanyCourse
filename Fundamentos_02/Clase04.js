@@ -4,7 +4,7 @@
 // Una función es una manera práctica, eficiente y efectiva de hacer llamar un mismo
 // bloque de código de una forma rápida y legible (que sea fácil de entender para humanos).
 
-/* console.log(nombre)
+console.log(nombre)
 
 var nombre = "Calixto"
  
@@ -14,7 +14,7 @@ console.log("Función completa terminada")
 
 // 02. Encontré la función saludar y ejecutar lo que tenga
 function saludar() {
-    console.log(`Hola ${nombre}, ¿cómo estás?`)
+    console.log(`Hola ${asd}`)
     if (nombre == 'Calixto') {
         console.log("Estudia más, prro")
     } else {
@@ -30,7 +30,7 @@ function mostrarMensajeAlFinalizarFuncion() {
     console.log("Terminé de hacer la función")
 }
 
-*/
+
 
 var numA = 5
 var numB = 10
@@ -80,7 +80,6 @@ sellMyCarAgain(primitiveC)
 console.log(primitiveC)
 sellMyCar(myCar)
 console.log(myCar.isAvaiable)
-
 
 function sellMyCar(car) {
     console.log("Se vendió el carro (CAMBIÉ EL VALOR ACCEDIENDO PRIMERO AL OBJETO)")

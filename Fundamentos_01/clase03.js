@@ -69,7 +69,8 @@ rl.question(`¿Cuál es tu edad? `, (edad) => {
 });
 
 function esMayorDeEdad(edad) {
-  return edad >= 18 // booleano
+  var age = Number(edad)
+  return age >= 18 // booleano
 }
 
 function esAfirmativo(anwser) {
